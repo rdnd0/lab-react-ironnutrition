@@ -4,6 +4,7 @@ import 'bulma/css/bulma.css';
 import './App.css';
 import FoodBox from './components/FoodBox.js';
 import Form from './components/Form.js';
+import Search from './components/Search.js';
 class App extends Component {
 
   state = {
@@ -15,18 +16,28 @@ class App extends Component {
     this.setState({
       foods : [...foods, aliment ]   
     })
-    console.log('food here ', foods);
+  }
+
+  displaySearched = (filter) => {
+
+    let filtArr = [...foods].filter((food)=>{
+      return food.name.toLowerCase().search(filter.toLowerCase()) !==-1;
+      //-1 means it does not exist
+
+    });
+
+    this.setState({
+      foods : filtArr
+    })
+  
+
   }
 
   render() {
     return (
       <div className="container">
         <h1>Iron Nutrition</h1>
-        <div class="field">
-          <div class="control">
-            <input class="input is-primary" type="text" placeholder="Yummyy!!"/>
-        </div>
-        </div>
+          <Search search={this.displaySearched}/>
         <div className="columns">
           <div className="column">
 
