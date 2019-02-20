@@ -36,11 +36,11 @@ export default class Form extends Component {
     return (
       <div className="box column">
         <label>name</label>
-        <input type="text" name='name' onChange={this.handleText} />
+        <input type="text" name='name' onChange={this.handleText} value={this.state.name} />
         <label>calories</label>
-        <input type="text" name='calories' onChange={this.handleText} />
+        <input type="text" name='calories' onChange={this.handleText} value={this.state.calories}/>
         <label>image</label>
-        <input type="text" name='image' onChange={this.handleText} />
+        <input type="text" name='image' onChange={this.handleText} value={this.state.image}/>
         <button className="button is-rounded is-primary" onClick={this.handleClick}>Add</button>
       </div>
     )
