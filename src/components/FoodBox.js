@@ -1,7 +1,23 @@
 import React, { Component } from 'react'
 
 export default class FoodBox extends Component {
+  state = {
+ 
+  }
+
+
+  addItem = (e) => {
+    e.preventDefault();
+    const {addSider , food} = this.props;
+    console.log(food);
+    addSider(food);
+  
+  }
+
+
+  
   render() {
+
     return (
 <div className="box">
   <article className="media">
@@ -24,11 +40,11 @@ export default class FoodBox extends Component {
           <input
             className="input"
             type="number" 
-            value="1"
+            value={this.state.number}
           />
         </div>
         <div className="control">
-          <button className="button is-info">
+          <button className="button is-info" onClick={this.addItem}>
             +
           </button>
         </div>

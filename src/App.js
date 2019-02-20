@@ -5,10 +5,13 @@ import './App.css';
 import FoodBox from './components/FoodBox.js';
 import Form from './components/Form.js';
 import Search from './components/Search.js';
+import List from './components/List.js'
+
 class App extends Component {
 
   state = {
-    foods : foods
+    foods : foods,
+    chosenFood : []
   }
 
   handleAdd = (aliment) => {
@@ -16,6 +19,15 @@ class App extends Component {
     this.setState({
       foods : [...foods, aliment ]   
     })
+  }
+
+
+  addSider = (food) => {
+    this.setState({
+      chosenFood : [...this.state.chosenFood, food]
+    })
+    
+
   }
 
   displaySearched = (filter) => {
@@ -45,11 +57,12 @@ class App extends Component {
               return <FoodBox key={index}
               name={food.name}
               calories={food.calories}
-              image={food.image} />;
+              image={food.image} addSider={this.addSider} food={food}/>;
             })}
           </div>
           <div className="column">
-            <Form addToList={this.handleAdd}/>
+            <Form addToList={this.handleAdd} />
+            <List platanos={this.state.chosenFood}/>
           </div>
         </div>
       
